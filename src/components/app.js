@@ -1,9 +1,20 @@
 import { PolymerElement, html } from "@polymer/polymer";
+import { afterNextRender } from "@polymer/polymer/lib/utils/render-status";
 
 import "./add-item";
 import "./list-items";
 
 class TodoApp extends PolymerElement {
+  constructor() {
+    super();
+
+    afterNextRender(this, () => {
+      this.addEventListener("addTodo", (e) => {
+        this.todoList = e.detail.todoList;
+      });
+    });
+  }
+
   static get properties() {
     return {
       todoList: {

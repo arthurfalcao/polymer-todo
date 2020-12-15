@@ -1,14 +1,14 @@
 import { PolymerElement, html } from "@polymer/polymer";
-import '@polymer/polymer/lib/elements/dom-repeat.js';
+import "@polymer/polymer/lib/elements/dom-repeat";
 
-import './todo-item'
+import "./todo-item";
 
 class ListItems extends PolymerElement {
   static get properties() {
     return {
       todoList: {
         type: Array,
-        value: []
+        value: [],
       },
     };
   }

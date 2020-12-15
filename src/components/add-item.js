@@ -6,7 +6,7 @@ class AddItem extends PolymerElement {
       todoList: Array,
       todoItem: {
         type: String,
-        value: ''
+        value: "",
       },
     };
   }
@@ -30,6 +30,13 @@ class AddItem extends PolymerElement {
     });
 
     localStorage.setItem("todo-list", JSON.stringify(todoList));
+    this.dispatchEvent(
+      new CustomEvent("addTodo", {
+        bubbles: true,
+        composed: true,
+        detail: { todoList },
+      })
+    );
     this.todoItem = "";
   }
 
