@@ -45,7 +45,7 @@ class TodoApp extends PolymerElement {
 
   static get template() {
     return html`
-      <p>Hello World 2</p>
+      <h1>Polymer TODO</h1>
       <add-item></add-item>
       <list-items todo-list="{{todoList}}"></list-items>
     `;
