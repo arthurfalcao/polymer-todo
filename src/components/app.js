@@ -12,6 +12,14 @@ class TodoApp extends PolymerElement {
       this.addEventListener("addTodo", (e) => {
         this.todoList = e.detail.todoList;
       });
+
+      this.addEventListener("removeTodo", (e) => {
+        const todos = this.todoList.filter(
+          (todo) => todo.id !== e.detail.todoId
+        );
+        this.todoList = todos;
+        localStorage.setItem("todo-list", JSON.stringify(todos));
+      });
     });
   }
 
