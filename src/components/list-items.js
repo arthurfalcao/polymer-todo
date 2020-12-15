@@ -1,5 +1,7 @@
-import '@polymer/polymer/lib/elements/dom-repeat.js';
 import { PolymerElement, html } from "@polymer/polymer";
+import '@polymer/polymer/lib/elements/dom-repeat.js';
+
+import './todo-item'
 
 class ListItems extends PolymerElement {
   static get properties() {
@@ -15,7 +17,7 @@ class ListItems extends PolymerElement {
     return html`
       <ul>
         <template is="dom-repeat" items="{{todoList}}">
-          <li>{{item.item}}</li>
+          <todo-item todo-item="{{item}}"></todo-item>
         </template>
       </ul>
     `;
