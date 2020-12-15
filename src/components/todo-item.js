@@ -13,10 +13,20 @@ class TodoItem extends PolymerElement {
   static get template() {
     return html`
       <li>
-        <span>{{todoItem.item}}</span>
+        <input type="checkbox" checked="{{todoItem.done}}" on-click="handleDone">{{todoItem.item}}</input>
         <button on-click="handleRemove">X</button>
       </li>
     `;
+  }
+
+  handleDone() {
+    this.dispatchEvent(
+      new CustomEvent("changeTodo", {
+        bubbles: true,
+        composed: true,
+        detail: { todoId: this.todoItem.id },
+      })
+    )
   }
 
   handleRemove() {

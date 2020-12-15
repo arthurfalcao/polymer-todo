@@ -17,6 +17,17 @@ class TodoApp extends PolymerElement {
         const todos = this.todoList.filter(
           (todo) => todo.id !== e.detail.todoId
         );
+
+        this.todoList = todos;
+        localStorage.setItem("todo-list", JSON.stringify(todos));
+      });
+
+      this.addEventListener("changeTodo", (e) => {
+        const todos = this.todoList.map((todo) => {
+          if (todo.id !== e.detail.todoId) return todo;
+          return { ...todo, done: !todo.done };
+        });
+
         this.todoList = todos;
         localStorage.setItem("todo-list", JSON.stringify(todos));
       });
